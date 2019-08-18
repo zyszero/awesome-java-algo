@@ -71,9 +71,8 @@ public class ZeroOrOneBackpack {
             // 从大到小的原因是为了避免重复计算
             for (int j = w - weight[i]; j >= 0; j--) {
                 // 选择把第 i 个物品放入背包
-                // 为什么直接 states[j] 就行呢？
-                // 因为完全不放入物品的分支，是可以直接省略
-                // 可以不用二维数组的原因是什么？
+                // 提示： 基于上一个状态来看
+                // 核心思想：就是状态分支
                 if (states[j]) {
                     states[weight[i] + j] = true;
                 }
@@ -85,5 +84,10 @@ public class ZeroOrOneBackpack {
             }
         }
         return 0;
+    }
+
+
+    public static void main(String[] args) {
+        new ZeroOrOneBackpack().backpack(new int[]{2, 2, 4, 6, 3}, 9);
     }
 }

@@ -1,5 +1,7 @@
 package com.zys.data.structure;
 
+import java.util.Arrays;
+
 /**
  * @decription: BM 字符串匹配算法
  * @author: zys
@@ -22,9 +24,7 @@ public class BM {
      */
     private void generateHash(char[] patternStr, int m, int[] hash) {
         // 初始化散列表
-        for (int i = 0; i < hash.length; i++) {
-            hash[i] = -1;
-        }
+        Arrays.fill(hash, -1);
         for (int i = 0; i < m; i++) {
             // 字符转成 int 就是 ASCII 值了
             int ascii = (int) patternStr[i];

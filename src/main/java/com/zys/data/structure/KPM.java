@@ -20,7 +20,7 @@ public class KPM {
      * @param m 模式串的长度
      * @return 返回 PMT 的数组
      */
-    public static int[] getNexts1(char[] b, int m) {
+    public static int[] getNext1(char[] b, int m) {
         int[] next = new int[m];
         next[0] = -1;
         int i = 0, k = -1;
@@ -62,7 +62,7 @@ public class KPM {
      * @param m 模式串的长度
      * @return 返回 PMT 的数组
      */
-    public static int[] getNexts(char[] b, int m) {
+    public static int[] getNext(char[] b, int m) {
         //初始化 next 数组
         int[] next = new int[m];
         next[0] = -1;
@@ -95,7 +95,7 @@ public class KPM {
     public int kmp1(char[] a, int n, char[] b, int m) {
         // j 是坏字符在模式串中对应的下标
         int i = 0, j = 0;
-        int[] next = getNexts1(b, m);
+        int[] next = getNext1(b, m);
         while (i < n && j < m) {
             if (j == -1 || a[i] == b[j]) {
                 i++;
@@ -124,7 +124,7 @@ public class KPM {
     public int kmp(char[] a, int n, char[] b, int m) {
         // j 代表坏字符在模式串中对应的下标
         int j = 0;
-        int[] next = getNexts(b, m);
+        int[] next = getNext(b, m);
         for (int i = 0; i < n; i++) {
             // 当b[j] != a[i]时，j 即为坏字符在模式串中对应的下标
             while (j > 0 && b[j] != a[i]) {
@@ -144,6 +144,6 @@ public class KPM {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(getNexts(new char[]{'a', 'b', 'a', 'b', 'a', 'b', 'c', 'a'}, 8)));
+        System.out.println(Arrays.toString(getNext(new char[]{'a', 'b', 'a', 'b', 'a', 'b', 'c', 'a'}, 8)));
     }
 }
